@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>/rivals/skyboxes/sky/</title>
+    <link rel="stylesheet" href="/global.css" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="header">
+        <span class="header">skybox</span>
+        <a href="..">go back</a>
+      </div>
+      <div class="container"></div>
+    </div>
+
+    <script>
+      const sky = location.search.match(/name=([^&]*)/)[1];
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const target = document.querySelector('.container');
+
+        document.querySelector('span.header').textContent =
+          `viewing "${sky.replaceAll('%20', ' ')}" skybox`;
+
+        ['bk', 'dn', 'ft', 'lf', 'rt', 'up'].forEach(face => {
+          const div = document.createElement('div');
+          div.classList.add('item');
+          div.addEventListener('click', () => {
+            navigator.clipboard.writeText(`${location.origin}/rivals/skyboxes/${sky}/sky512_${face}.tex`)
+          })
+
+          const img = document.createElement('img');
+          img.classList.add('icon');
+          img.src = `../${sky}/sky512_${face}.tex`;
+
+          const span = document.createElement('span');
+          span.classList.add('label');
+          span.textContent = `${face} `;
+
+          div.appendChild(img);
+          div.appendChild(span);
+          target.appendChild(div);
+        });
+      });
+    </script>
+  </body>
+</html>

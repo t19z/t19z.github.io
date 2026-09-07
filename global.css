@@ -1,0 +1,78 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e2e;
+}
+
+div.content {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 4rem;
+}
+
+div.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 1rem;
+  row-gap: 1rem;
+}
+
+div.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+
+  transition: 200ms ease-in-out all;
+
+  &:hover {
+    background-color: #313244;
+  }
+}
+
+img.icon {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+span,
+a {
+  color: #cdd6f4;
+  font-family: 'JetBrainsMono Nerd Font Propo';
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+div.header {
+  display: flex;
+  flex-direction: row;
+}
+
+a {
+  color: #89b4fa;
+  text-decoration: none;
+}
+
+.header a {
+  font-size: 2rem;
+
+  &::before {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    color: #cdd6f4;
+
+    content: '~';
+  }
+}
+
+span.header {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

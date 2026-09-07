@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head data-path="/rivals/skyboxes/">
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>/rivals/skyboxes/</title>
+    <link rel="stylesheet" href="/global.css" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="header">
+        <span class="header">rivals skyboxes</span>
+        <a href="..">go back</a>
+      </div>
+      <div class="container"></div>
+    </div>
+
+    <script>
+      /* to easily get skyboxes, put in console:
+
+        const skyboxList = < ls skyboxes >
+        console.log('[' + skyboxList.split('\n').map(v => `'${v}',`).join('\n') + ']')
+      
+        */
+      const skyboxes = [
+        'Aurora',
+        'Beautiful',
+        'Blackhole Skybox',
+        'Blue',
+        'Broken Sky Skybox',
+        'Castle Grounds Skybox',
+        'Chill Gray',
+        'Chill Pink',
+        'Clear Skies Skybox',
+        'Cyan',
+        'Dead Star Forest',
+        'Elegant Morning Sky',
+        'Emo',
+        'Fade Blue Sky',
+        'Forest',
+        'Goodnight',
+        'Grimnight',
+        'Hades',
+        'Hazy',
+        'Jungle CSGO',
+        'Light Blue',
+        'Light Pink',
+        'MC End Sky',
+        'MC Skybox',
+        'Moonlight',
+        'Neon Sky',
+        'Neon Sky 2',
+        'Night',
+        'Night Sky W Moon',
+        'Northern Lights Skybox',
+        'Oblivion',
+        'Orange',
+        'Overcast',
+        'Pandora',
+        'Peaceful Morning Sky',
+        'Pink Sunrise',
+        'Pumpkin Hill Skybox',
+        'Purple Nebula Skybox',
+        'Red',
+        'Setting Sun Sky',
+        'SFOTH',
+        'Shiverfrost',
+        'Sky 05',
+        'Sky 13',
+        'Sky 2006',
+        'Sky 22',
+        'Sky 31',
+        'Sky 38',
+        'Sky 47',
+        'Sky Disaster',
+        'Sky Nibiru Bl',
+        'Sky Purple',
+        'Sky Sunset',
+        'Space Blue',
+        'Spooky',
+        'Sunny Sky',
+        'Universe',
+        'Utter East',
+        'Whomp Fortress',
+        'Winterness',
+        'Xen Skybox',
+        'Zen End',
+      ];
+      const target = document.querySelector('.container');
+
+      skyboxes.forEach(sky => {
+        const div = document.createElement('div');
+        div.classList.add('item');
+        div.dataset.href = `sky/?name=${sky}`;
+
+        const img = document.createElement('img');
+        img.classList.add('icon');
+        img.src = `${sky}/sky512_ft.tex`;
+
+        const span = document.createElement('span');
+        span.classList.add('label');
+        span.textContent = sky;
+
+        div.appendChild(img);
+        div.appendChild(span);
+        target.appendChild(div);
+      });
+    </script>
+
+    <script src="/navigation.js"></script>
+  </body>
+</html>

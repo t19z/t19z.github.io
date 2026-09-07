@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>/rivals/arena_boxes/</title>
+    <link rel="stylesheet" href="/global.css" />
+    <style>
+      .mode {
+        display: flex;
+        flex-direction: row;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="header">
+        <span class="header">rivals arena boxes</span>
+        <a href="..">go back</a>
+      </div>
+      <div class="mode">
+        <span class="label modeLabel">selected: light mode (</span>
+        <a href="?mode=dark" class="button modeLink">toggle mode</a>
+        <span class="label">)</span>
+      </div>
+      <div class="container"></div>
+    </div>
+
+    <script>
+      const boxes = ['default.png', 'diagonal.png', 'grid.png'];
+      const target = document.querySelector('.container');
+      
+      const mode = (location.search.match(/mode=([^&]*)/) ?? ['', 'light'])[1];
+
+      document.querySelector('.modeLabel').textContent =
+        `selected: ${mode} mode (`;
+      document.querySelector('.modeLink').href =
+        `?mode=${mode === 'light' ? 'dark' : 'light'}`;
+
+      boxes.forEach(box => {
+        let t;
+
+        const div = document.createElement('div');
+        div.classList.add('item');
+
+        const img = document.createElement('img');
+        img.classList.add('icon');
+        img.src = `${mode}/${box}`;
+        img.style.background = 'white';
+
+        const span = document.createElement('span');
+        span.classList.add('label');
+        span.textContent = `${box} `;
+
+        div.appendChild(img);
+        div.appendChild(span);
+        target.appendChild(div);
+
+        div.addEventListener('click', () => {
+          navigator.clipboard.writeText(
+            `${location.origin}/rivals/arena_boxes/${mode}/${box}`
+          );
+          if (t) clearTimeout(t);
+          span.textContent = `${box} 󰸞`;
+          t = setTimeout(() => {
+            span.textContent = `${box} `;
+          }, 1000);
+        });
+      });
+    </script>
+  </body>
+</html>

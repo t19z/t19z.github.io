@@ -27,11 +27,10 @@
           `viewing "${sky.replaceAll('%20', ' ')}" skybox`;
 
         ['bk', 'dn', 'ft', 'lf', 'rt', 'up'].forEach(face => {
+          let t;
+
           const div = document.createElement('div');
           div.classList.add('item');
-          div.addEventListener('click', () => {
-            navigator.clipboard.writeText(`${location.origin}/rivals/skyboxes/${sky}/sky512_${face}.tex`)
-          })
 
           const img = document.createElement('img');
           img.classList.add('icon');
@@ -44,6 +43,17 @@
           div.appendChild(img);
           div.appendChild(span);
           target.appendChild(div);
+
+          div.addEventListener('click', () => {
+            navigator.clipboard.writeText(
+              `${location.origin}/rivals/skyboxes/${sky}/sky512_${face}.tex`
+            );
+            if (t) clearTimeout(t);
+            span.textContent = `${face} 󰸞`;
+            t = setTimeout(() => {
+              span.textContent = `${face} `;
+            }, 1000);
+          });
         });
       });
     </script>
